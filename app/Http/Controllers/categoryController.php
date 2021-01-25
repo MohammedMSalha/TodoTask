@@ -7,7 +7,7 @@ use App\Models\categories;
 use Illuminate\Support\Facades\Auth;
 
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
 
 

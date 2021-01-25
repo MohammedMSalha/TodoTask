@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\categories;
 
 
-class taskController extends Controller
+class TaskController extends Controller
 {
 
     /**
