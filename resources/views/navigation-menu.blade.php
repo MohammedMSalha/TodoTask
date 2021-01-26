@@ -18,12 +18,12 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('cat') }}" :active="request()->routeIs('cat')">
-                        {{ __('Add Category') }}
+                        {{ __('Categories') }}
                     </x-jet-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('tasks') }}" :active="request()->routeIs('tasks')">
-                        {{ __('Add Task') }}
+                        {{ __('Tasks') }}
                     </x-jet-nav-link>
                 </div>
             </div>

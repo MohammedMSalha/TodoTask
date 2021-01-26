@@ -12,6 +12,17 @@
             <div class="container">
             <div class="row mb-3 mt-3">
                <form method="post" action="{{ route('delete-task',$task->id)  }}"> 
+               @if ($errors->any())
+                    <div class="form-group mt-4">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <h6>{{ $error }}</h6>
+                        @endforeach
+                    </ul>
+                </div>
+                </div>
+                @endif
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                <input type="hidden" name="_method" value="DELETE">
 <h4>Are you sure to delete the task?</h4>
@@ -19,17 +30,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Task title*</label>
     <input type="text" class="form-control" name="title" value="{{$task->title}}" aria-describedby="name"  disabled>
-    @if ($errors->any())
-    <div class="form-group mt-4">
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <h6>{{ $error }}</h6>
-        @endforeach
-    </ul>
-</div>
-</div>
-@endif
+   
 
 
   </div>

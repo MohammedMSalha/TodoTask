@@ -13,29 +13,38 @@
               <div class="row mb-3 mt-3">
             <div class="col-md-4 ">
                <form method="post" action="{{ route('tasks') }}"> 
+               @if(session('success'))
+                <div class="form-group mt-4">
+                    <div class="alert alert-success">
+                    {{session('success')}}
+                    </div>
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="form-group mt-4">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <h6>{{ $error }}</h6>
+                        @endforeach
+                    </ul>
+                </div>
+                </div>
+                @endif
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                @if ($cat->count() > 0)
   <div class="form-group">
     <label for="exampleInputEmail1">Task title*</label>
 
     <input type="text" class="form-control" name="title" aria-describedby="name" placeholder="Enter Task Title !" required>
-    @if ($errors->any())
-    <div class="form-group mt-4">
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <h6>{{ $error }}</h6>
-        @endforeach
-    </ul>
-</div>
-</div>
-@endif
+  
 
 
   </div>
   <div class="form-group mt-3">
   <label for="desc">Task Description*</label>
-  <textarea class="form-control" name="desc" rows="3"></textarea>
+  <textarea class="form-control" name="desc" rows="3" required></textarea>
   </div>
   <div class="form-group mt-3">
   <label for="desc">Category*</label>
@@ -58,13 +67,7 @@
   <div class="form-group mt-3">
   <button type="submit" class="btn btn-success">ADD</button>
   </div>
-  @if(session('success'))
-<div class="form-group mt-4">
-    <div class="alert alert-success">
-    {{session('success')}}
-    </div>
-    </div>
-@endif
+ 
   @else 
   <div class="form-group mt-4">
 <div class="alert alert-danger">

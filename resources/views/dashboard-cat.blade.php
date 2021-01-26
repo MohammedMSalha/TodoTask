@@ -39,7 +39,7 @@
                                 <div class="card-body">
                                   
                                     <h6 class="mt-2 text-danger">Due Date : </h6><span>{{ $data->due_date }}</span>
-                                    <h6 class="mt-2 text-danger">Description : </h6><span>{{ $data->due_date }}</span>
+                                    <h6 class="mt-2 text-danger">Description : </h6><span>{{ $data->desc }}</span>
                                     <h6 class="mt-2 text-danger">Tags : </h6><span>{{ $data->tags }}</span>
                         
                                 </div>

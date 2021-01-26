@@ -12,6 +12,24 @@
             <div class="container">
             <div class="row mb-3 mt-3">
                <form method="post" action="{{ route('edit-task',$task->id) }}"> 
+               @if(session('success'))
+                <div class="form-group mt-4">
+                    <div class="alert alert-success">
+                    {{session('success')}}
+                    </div>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="form-group mt-4">
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <h6>{{ $error }}</h6>
+                        @endforeach
+                    </ul>
+                </div>
+                </div>
+                @endif
                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                <input type="hidden" name="_method" value="PUT">
 
@@ -19,17 +37,7 @@
   <div class="form-group">
     <label for="exampleInputEmail1">Task title*</label>
     <input type="text" class="form-control" name="title" value="{{$task->title}}" aria-describedby="name" placeholder="Enter Task Title !" required>
-    @if ($errors->any())
-    <div class="form-group mt-4">
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <h6>{{ $error }}</h6>
-        @endforeach
-    </ul>
-</div>
-</div>
-@endif
+   
 
 
   </div>
@@ -60,13 +68,7 @@
   <div class="form-group mt-3">
   <button type="submit" class="btn btn-success">Update</button>
   </div>
-  @if(session('success'))
-<div class="form-group mt-4">
-    <div class="alert alert-success">
-    {{session('success')}}
-    </div>
-    </div>
-@endif
+ 
   @else 
   <div class="form-group mt-4">
 <div class="alert alert-danger">
